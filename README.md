@@ -1,0 +1,2 @@
+# AntiForgeryTokenAjaxPostForMVC
+AntiForgeryTokenAjaxPostForMVC
