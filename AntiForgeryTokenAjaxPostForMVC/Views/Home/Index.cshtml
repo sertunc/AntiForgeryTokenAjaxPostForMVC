@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+}
+
+<button id="mybutton" class="btn btn-success">
+    Click me to send an AJAX request to a controller action
+    decorated with the [ValidateAntiForgeryToken] attribute
+</button>
+
+
+
+<script type="text/javascript">
+    $('#mybutton').click(function () {
+        var form = $('#__AjaxAntiForgeryForm');
+        var token = $('input[name="__RequestVerificationToken"]', form).val();
+        $.ajax({
+            url: "@Url.Action("Index", "Home")",
+            type: 'POST',
+            data: {
+                @Html.AntiForgeryTokenForAjaxPost(),
+                someValue: 'some value'
+            },
+            success: function (result) {
+                alert(result.someValue);
+            }
+        });
+        return false;
+    });
+</script>
+
