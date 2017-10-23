@@ -11,9 +11,7 @@
 </button>
 
 <script type="text/javascript">
-    $('#mybutton').click(function () {
-        var form = $('#__AjaxAntiForgeryForm');
-        var token = $('input[name="__RequestVerificationToken"]', form).val();
+    $('#mybutton').click(function () {        
         $.ajax({
             url: "@Url.Action("Index", "Home")",
             type: 'POST',
