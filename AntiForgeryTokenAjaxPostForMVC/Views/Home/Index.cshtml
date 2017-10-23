@@ -5,17 +5,10 @@
 
 <h2>Index</h2>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
-{
-    @Html.AntiForgeryToken()
-}
-
 <button id="mybutton" class="btn btn-success">
     Click me to send an AJAX request to a controller action
     decorated with the [ValidateAntiForgeryToken] attribute
 </button>
-
-
 
 <script type="text/javascript">
     $('#mybutton').click(function () {
